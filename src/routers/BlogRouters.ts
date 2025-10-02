@@ -12,6 +12,14 @@ import {blogDataAccessLayerMongoDB} from "../dataAccessLayer/blog-data-access-la
 export const BlogRouter = Router();
 
 BlogRouter.get("/", async (req: Request, res: Response) => {
+  const {
+      searchNameTerm,
+      sortBy
+  } = req.query;
+
+    console.log(searchNameTerm);
+    console.log(sortBy);
+
   const blogAll = await blogDataAccessLayerMongoDB.getAllBlogs();
   return await res.status(HTTP_STATUS.OK_200).send(blogAll);
 })

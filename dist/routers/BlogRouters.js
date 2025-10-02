@@ -19,6 +19,9 @@ const input_validation_middleware_1 = require("../middlewares/input-validation-m
 const blog_data_access_layer_mongodb_1 = require("../dataAccessLayer/blog-data-access-layer-mongodb");
 exports.BlogRouter = (0, express_1.Router)();
 exports.BlogRouter.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { searchNameTerm, sortBy } = req.query;
+    console.log(searchNameTerm);
+    console.log(sortBy);
     const blogAll = yield blog_data_access_layer_mongodb_1.blogDataAccessLayerMongoDB.getAllBlogs();
     return yield res.status(StatusCode_1.HTTP_STATUS.OK_200).send(blogAll);
 }));
